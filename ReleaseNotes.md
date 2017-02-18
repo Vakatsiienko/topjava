@@ -16,7 +16,7 @@
   - обновил jQuery до 3.x, исключил из зависимостей webjars ненужные jQuery
   - cделал <a href="http://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup/24070373#24070373">загрузку скриптов асинхронной</a>
   - фильтр еды сделал в [Bootstrap Panels](http://getbootstrap.com/components/#panels)
-  - кнопку сброса фильтра, очистку полей формы через `reset()`
+  - вместо `Persistable` ввел интерфейс `HasId` и наследую от него как Entity, так и TO
 
 ### Topjava 8
 - добавил:
