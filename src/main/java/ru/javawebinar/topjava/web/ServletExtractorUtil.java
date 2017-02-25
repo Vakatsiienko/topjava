@@ -15,6 +15,6 @@ public class ServletExtractorUtil {
 
     public static String extractOrDefault(HttpServletRequest req, String paramName, String defaultValue) {
         String strValue = req.getParameter(paramName);
-        return strValue == null || strValue.isEmpty() ? defaultValue : paramName;
+        return strValue == null || strValue.isEmpty() ? defaultValue : strValue;
     }
 }

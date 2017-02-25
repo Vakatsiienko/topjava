@@ -16,7 +16,25 @@
     </style>
 </head>
 <body>
-
+<form action="users" method="POST">
+    <label for="userSelect">User:</label>
+    <select id="userSelect" name="userSelect">
+        <option
+                <c:if test="${!empty userType && userType.equals('admin')}">
+                    selected
+                </c:if>
+        >admin
+        </option>
+        <option
+                <c:if test="${!empty userType && userType.equals('user')}">
+                    selected
+                </c:if>
+        >user
+        </option>
+    </select>
+    <input type="text" name="redirectUri" value="/meals" hidden>
+    <input type="text" name="action" value="switchUser" hidden>
+    <input type="submit" value="Change"/>
 </form>
 <section>
     <h2><a href="index.html">Home</a></h2>
@@ -29,14 +47,14 @@
             <input id="startDate" name="startDate" type="date"
                    value="${param.startDate}"
             <%--<c:if test="${!empty param.startDate}">--%>
-                    <%--value="${fn:formatDate(param.startDate)}"--%>
+            <%--value="${fn:formatDate(param.startDate)}"--%>
             <%--</c:if>--%>
             >
             <label for="startTime">Start Time:</label>
             <input id="startTime" name="startTime" type="time"
                    value="${param.startTime}"
             <%--<c:if test="${!empty param.startTime}">--%>
-                   <%--value="${fn:formatTime(param.startTime)}"--%>
+            <%--value="${fn:formatTime(param.startTime)}"--%>
             <%--</c:if>--%>
             >
             <br>
