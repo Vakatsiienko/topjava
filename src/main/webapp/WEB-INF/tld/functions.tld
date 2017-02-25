@@ -13,4 +13,14 @@
         <function-class>ru.javawebinar.topjava.util.DateTimeUtil</function-class>
         <function-signature>java.lang.String toString(java.time.LocalDateTime)</function-signature>
     </function>
+    <function>
+        <name>formatDate</name>
+        <function-class>ru.javawebinar.topjava.util.DateTimeUtil</function-class>
+        <function-signature>java.lang.String toHtmlFormatDate(java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>formatTime</name>
+        <function-class>ru.javawebinar.topjava.util.DateTimeUtil</function-class>
+        <function-signature>java.lang.String toHtmlFormatTime(java.lang.String)</function-signature>
+    </function>
 </taglib>

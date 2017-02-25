@@ -40,6 +40,11 @@ public class User extends NamedEntity {
         this.roles = roles;
     }
 
+    public User(User user) {
+        this(user.getId(), user.getName(), user.getEmail(), user.getPassword(), user.getCaloriesPerDay(), user.isEnabled(), user.getRoles());
+        this.registered = user.getRegistered();
+    }
+
     public String getEmail() {
         return email;
     }

@@ -16,12 +16,47 @@
     </style>
 </head>
 <body>
+
+</form>
 <section>
     <h2><a href="index.html">Home</a></h2>
     <h2>Meal list</h2>
     <a href="meals?action=create">Add Meal</a>
     <hr>
-    <table border="1" cellpadding="8" cellspacing="0">
+    <form id="dateAndTimeFilterForm" action="meals">
+        <fieldset style="width:420px;">
+            <label for="startDate">Start Date:</label>
+            <input id="startDate" name="startDate" type="date"
+                   value="${param.startDate}"
+            <%--<c:if test="${!empty param.startDate}">--%>
+                    <%--value="${fn:formatDate(param.startDate)}"--%>
+            <%--</c:if>--%>
+            >
+            <label for="startTime">Start Time:</label>
+            <input id="startTime" name="startTime" type="time"
+                   value="${param.startTime}"
+            <%--<c:if test="${!empty param.startTime}">--%>
+                   <%--value="${fn:formatTime(param.startTime)}"--%>
+            <%--</c:if>--%>
+            >
+            <br>
+            <label for="endDate">End Date:</label>
+            <input id="endDate" name="endDate" type="date"
+            <c:if test="${!empty param.endDate}">
+                   value="${fn:formatDate(param.endDate)}"
+            </c:if>>
+            <label for="endTime">End Time:</label>
+            <input id="endTime" name="endTime" type="time"
+            <c:if test="${!empty param.endTime}">
+                   value="${fn:formatTime(param.endTime)}"
+            </c:if>>
+            <br>
+            <input type="text" name="action" value="filter" hidden>
+            <input type="submit">
+            <a href="meals">Cancel</a>
+        </fieldset>
+    </form>
+    <table border="1" cellpadding="8" cellspacing="0" width="450px">
         <thead>
         <tr>
             <th>Date</th>
@@ -32,7 +67,8 @@
         </tr>
         </thead>
         <c:forEach items="${meals}" var="meal">
-            <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
+            <jsp:useBean id="meal" scope="page"
+                         type="ru.javawebinar.topjava.model.to.MealWithExceed"/>
             <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
                 <td>
                         <%--${meal.dateTime.toLocalDate()} ${meal.dateTime.toLocalTime()}--%>
