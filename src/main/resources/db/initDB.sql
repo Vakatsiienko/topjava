@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS user_roles;
+DROP TABLE IF EXISTS meals;
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS global_seq;
 
@@ -14,12 +15,23 @@ CREATE TABLE users
   enabled    BOOL DEFAULT TRUE,
   calories_per_day INTEGER DEFAULT 2000 NOT NULL
 );
-CREATE UNIQUE INDEX users_unique_email_idx ON users (email);
+
+CREATE TABLE meals
+(
+  id INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  user_id INTEGER,
+  datetime TIMESTAMP NOT NULL,
+  description VARCHAR NOT NULL,
+  calories INTEGER NOT NULL
+);
 
 CREATE TABLE user_roles
 (
-  user_id INTEGER NOT NULL,
-  role    VARCHAR,
-  CONSTRAINT user_roles_idx UNIQUE (user_id, role),
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+user_id INTEGER NOT NULL,
+role    VARCHAR,
+CONSTRAINT user_roles_idx UNIQUE (user_id, role),
+FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
+ALTER TABLE meals ADD FOREIGN KEY (user_id) REFERENCES users(id);
+CREATE UNIQUE INDEX users_unique_email_idx ON users (email);
+CREATE INDEX meals_user_id_idx ON meals (user_id);
